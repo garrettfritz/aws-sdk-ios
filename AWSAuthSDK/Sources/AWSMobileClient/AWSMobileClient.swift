@@ -165,6 +165,18 @@ public class AWSMobileClient: _AWSMobileClient {
         return _sharedInstance
     }
     
+    public func reinit() {
+        
+        if self.cachedLoginsMap.count > 0 {
+            if self.userPoolClient?.currentUser()?.isSignedIn == true {
+                self.federationProvider = .userPools
+            } else {
+                self.federationProvider = .oidcFederation
+            }
+        }
+        
+    }
+    
     
     /// Initializes `AWSMobileClient` and determines the `UserState` for current user using cache.
     ///
