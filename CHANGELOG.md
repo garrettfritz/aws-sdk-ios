@@ -1,6 +1,53 @@
 
 # AWS Mobile SDK for iOS CHANGELOG
 
+## 2.8.4
+
+### New Features
+
+* **AWS IoT**
+  * Added support for Custom Authorizers. AWS IoT allows you to define custom authorizers that allow you to manage your own authentication and authorization strategy using a custom authentication service and a Lambda function. Custom authorizers allow AWS IoT to authenticate your devices and authorize operations using bearer token authentication and authorization strategies. See [AWS IoT Custom Authentication](https://docs.aws.amazon.com/iot/latest/developerguide/iot-custom-authentication.html) for more details.
+
+### Bug Fixes
+
+* **Amazon Kinesis Firehose**
+  * Fixed error handling in `-[AWSFirehoseRecorderHelper submitRecordsForStream:records:rowIds:putRowIds:retryRowIds:stop:]`. [See PR #1176](https://github.com/aws-amplify/aws-sdk-ios/pull/1176). Thanks @dataxpress!
+
+## 2.8.3
+
+### Bug Fixes
+
+* **AWSMobileClient**
+  * Fixed completion handler not being called on success for `AWSMobileClient.updateUserAttrinutes(...)`. See [issue #1162](https://github.com/aws-amplify/aws-sdk-ios/issues/1162)
+
+## 2.8.2
+
+### Enhancements
+
+* **AWSMobileClient**
+  * Added support for `Developer Authenticated Identities` for `federatedSignIn` API. See [issue #1131](https://github.com/aws-amplify/aws-sdk-ios/issues/1131)
+
+* **Amazon S3**
+   * NSURL Tasks for Multipart uploads are now created during the initiation of the MulitPart request. See [issue #1088](https://github.com/aws-amplify/aws-sdk-ios/issues/1088), [issue #1065](https://github.com/aws-amplify/aws-sdk-ios/issues/1065), and [issue #769](https://github.com/aws-amplify/aws-sdk-ios/issues/769)
+
+### Bug Fixes
+
+* **AWSMobileClient**
+  * Fixed an issue where Google Sign In would not correctly reflect sign in status and completion handler callback. See [issue #1147](https://github.com/aws-amplify/aws-sdk-ios/issues/1147)
+
+* **AWSCognitoAuth**
+  * Fixed an issue where `getSession` callback is not invoked when the user hits the `Done` button. See [issue #1117](https://github.com/aws-amplify/aws-sdk-ios/issues/1117)
+
+* **Amazon S3**
+  * Fixed crash in AWSTransferUtility due to null value for subTask in inProgressPartsDictionary. See [issue #1152](https://github.com/aws-amplify/aws-sdk-ios/issues/1152)
+  * Canceled all session tasks as part of `removeS3TransferUtilityForKey` method  and implemented error propagation for NSURLSession creation. See [issue #1049](https://github.com/aws-amplify/aws-sdk-ios/issues/1049)
+
+## 2.8.1
+
+### Bug Fixes
+
+* Fixed an issue which caused failure in building SDK from source when using `Carthage`.
+
 ## 2.8.0
 
 ### New Features
